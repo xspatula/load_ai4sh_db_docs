@@ -18,12 +18,12 @@ Six process files create and populate the community schema:
 
 | File | Purpose |
 |---|---|
-| `community/community_user_categories_v10_sql.json` | Creates the `user_categories` table |
-| `community/community_user_categories_records_v10_sql.json` | Inserts default user category records |
-| `community/community_organisation_v10_sql.json` | Creates the `organisation` table |
-| `community/community_organisation_records_v10_sql.json` | **Edit before running** — inserts default organisation(s) |
-| `community/community_user_v10_sql.json` | Creates the `user`, `user_media` and `user_activity` tables |
-| `community/community_user_records_v10_sql.json` | **Edit before running** — inserts default user(s) |
+| `community/user_categories_v10_sql.json` | Creates the `user_categories` table |
+| `community/user_categories_records_v10_sql.json` | Inserts default user category records |
+| `community/organisation_v10_sql.json` | Creates the `organisation` table |
+| `community/organisation_records_v10_sql.json` | **Edit before running** — inserts default organisation(s) |
+| `community/user_v10_sql.json` | Creates the `user`, `user_media` and `user_activity` tables |
+| `community/user_records_v10_sql.json` | **Edit before running** — inserts default user(s) |
 
 ## Tables
 
@@ -66,7 +66,7 @@ Tracks cumulative session time and last activity date per user.
 
 ## Default records — edit before running
 
-The files `community_organisation_records_v10_sql.json` and `community_user_records_v10_sql.json` insert default records directly into the database during setup. You must edit these files to include at least one real organisation and one real user before running the notebook.
+The files `organisation_records_v10_sql.json` and `user_records_v10_sql.json` insert default records directly into the database during setup. You must edit these files to include at least one real organisation and one real user before running the notebook.
 
 The inserted user will be the creator of all subsequent process records and the default operator for the framework. The `user_name` and `password` in these files must match the `user_project` credentials in any non-setup scheme file you later use to operate the database.
 

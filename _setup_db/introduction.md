@@ -18,10 +18,10 @@ Before running the AI4SH database setup you need:
 
 - A running postgreSQL installation where you are superuser — see [PostgreSQL setup][postgres]
 - The Xspatula framework installed and a working Anaconda environment — see [Anaconda setup][anaconda]
-- The `seed_ai4sh_db` repository cloned to your machine:
+- The `load_ai4sh_db` repository cloned to your machine:
 
 ```bash
-git clone https://github.com/xspatula/seed_ai4sh_db
+git clone https://github.com/xspatula/load_ai4sh_db
 ```
 
 ## The setup notebook
@@ -128,10 +128,10 @@ The full execution order is:
 
 1. `schema/schema_v10_sql.json` — create all 9 schemas
 2. `utility/utility_v10_sql.json` — utility tables
-3. `utility/utility_territory_v10_sql.json` — territory reference data
+3. `utility/territory_v10_sql.json` — territory reference data
 4. `community/` — user categories, organisations and users
 5. `process/` — process and process parameter tables
-6. `observation_utility/` — ~30 reference catalogue tables (independent first, then dependent)
+6. `observation_utility/` — 37 JSON files defining reference catalogue tables (independent first, then dependent)
 7. `observation/` — dataset, campaign, sample and observation tables
 8. `landscape/` — landscape utility and observation tables
 9. `edna/` — eDNA utility and observation tables
@@ -143,8 +143,8 @@ Each section is described in detail in the following pages.
 Before running the notebook, also edit the default organisation and user records:
 
 ```
-./setup/zzz/ai4sh/setup_db/json_ai4sh/community/community_organisation_records_v10_sql.json
-./setup/zzz/ai4sh/setup_db/json_ai4sh/community/community_user_records_v10_sql.json
+./setup/zzz/ai4sh/setup_db/json_ai4sh/community/organisation_records_v10_sql.json
+./setup/zzz/ai4sh/setup_db/json_ai4sh/community/user_records_v10_sql.json
 ```
 
 These files insert at least one default organisation and user into the database. The inserted user name and password must match the `user_project` credentials in subsequent (non-setup) scheme files.

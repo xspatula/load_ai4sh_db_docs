@@ -26,7 +26,7 @@ The AI4SH database registers two root processes:
 {
   "process": "add_root_process",
   "parameters": {
-    "root_process_id": "manage_table_data",
+    "root_process": "manage_table_data",
     "title": "Manage table data",
     "label": "Root for processes for inserting, updating and deleting table data"
   }
@@ -39,9 +39,9 @@ All data management operations — inserting, updating, and deleting records in 
 
 ```json
 {
-  "process": "translate_data",
+  "process": "add_root_process",
   "parameters": {
-    "root_process_id": "translate_data",
+    "root_process": "translate_data",
     "title": "Translate data",
     "label": "Process for translating data between different formats — note that translate data does not affect the database, it prepares data in different formats to be handled by other processes."
   }
