@@ -3,7 +3,7 @@ title: "Observation Utility Schema"
 layout: single
 sidebar:
   nav: "setup_db"
-excerpt: "The observation_utility schema holds all reference catalogues needed for FAIR-compliant soil observations — units, methods, instruments, taxa, spatial references and more. It contains ~30 tables that must be seeded before any observation data can be entered."
+excerpt: "The observation_utility schema holds all reference catalogues needed for FAIR-compliant soil observations — units, methods, instruments, taxa, spatial references and more. It is defined across 37 JSON files that must be seeded before any observation data can be entered."
 permalink: /setup_db/observation_utility/
 author_profile: false
 date: 2026-03-31 08:00:00 +0200
@@ -12,7 +12,7 @@ last_modified_at: 2026-03-31 08:00:00 +0200
 
 The `observation_utility` schema holds all reference catalogues needed for FAIR-compliant soil observations. Think of it as the controlled vocabulary layer of the database: every instrument, method, unit, taxon, and spatial reference used in an observation must first exist here. The `observation` schema tables cannot be populated until the relevant `observation_utility` records exist.
 
-The schema contains approximately 30 tables, split into two groups: those with no internal foreign key dependencies (seeded first), and those that reference other observation_utility tables (seeded second).
+The schema is defined across 37 JSON files, split into two groups: those with no internal foreign key dependencies (seeded first), and those that reference other observation_utility tables (seeded second).
 
 ## Process files — independent tables
 
@@ -57,8 +57,9 @@ These tables reference other `observation_utility` tables and must be created af
 | `observation_utility_indicator_default_unit_v10_sql.json` | `indicator_default_unit` | `species`, `indicator`, `unit` |
 | `observation_utility_juxtaposition_v10_sql.json` | `juxtaposition` | `setting_system` |
 | `observation_utility_profiling_v10_sql.json` | `profiling` | `unit` (depth profiling for cores) |
-| `observation_utility_provision_v10_sql.json` | `provision` | `apparatus`, `provider`, `method_tier` — combines these three into a single instrument+service+tier record |
+| `observation_utility_provision_v10_sql.json` | `provision`, `provision_method_tier`, `provision_serial_nr`, `provision_calibration` | `apparatus`, `provider`, `method_tier` — combines these three into a single instrument+service+tier record, plus companion tables for method tier flags, serial numbers, and calibration |
 | `observation_utility_provision_indicator_v10_sql.json` | `provision_indicator` | `provision`, `indicator`, `analysis_method`, `unit` — the tangible observation values delivered by a specific provision |
+| `observation_utility_spectrometer_v10_sql.json` | `spectrometer` | `provision`, `provision_serial_nr` — registers a spectral sensor with its full wavelength axis array |
 | `observation_utility_quantity_default_unit_v10_sql.json` | `quantity_default_unit` | `quantity`, `species`, `unit` |
 | `observation_utility_taxa_v10_sql.json` | `taxa` | `taxa_level`, `taxa_status` |
 | `observation_utility_taxa_function_v10_sql.json` | `taxa_function` | `taxa_level`, `taxa_status` |

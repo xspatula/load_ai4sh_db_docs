@@ -26,7 +26,7 @@ Process files are located at:
 | `person_v10_sql.json` | `manage_person` | `observation.person` | 1 |
 | `dataset_v10_sql.json` | `manage_dataset` | `observation.dataset` | 3 |
 | `campaign_v10_sql.json` | `manage_campaign` | `observation.campaign` + companion tables | 3 |
-| `geolocation_v10_sql.json` | `manage_geolocation` | `observation.sample_geolocation` | 3 |
+| `sample_geolocation_v10_sql.json` | `manage_geolocation` | `observation.sample_geolocation` | 3 |
 | `sampling_log_v10_sql.json` | `manage_sampling_log` | `observation.sampling_log` | 2 |
 | `sample_v10_sql.json` | `manage_sample` | `observation.sample` | 4 |
 | `sample_image_v10_sql.json` | `manage_sample_image_orientation` | `observation.macrofauna_image` | 4 |
@@ -34,13 +34,16 @@ Process files are located at:
 | `observation_v10_sql.json` | `manage_observation` | `observation.observation` | 2 |
 | `quantity_v10_sql.json` | `manage_quantity` | `observation.observation` (quantity-specific) | 4 |
 | `measurement_v10_sql.json` | `manage_measurement_array` / `manage_measurement` | `observation.measurement` | 2 / 4 |
+| `beerkan_infiltration_v10_sql.json` | `manage_beerkan_observation` / `manage_beerkan_infiltration_interval` | `observation.infiltration_beerkan` | 2 |
+| `slakes_v10_sql.json` | `manage_beerkan_observation` | `observation.app_aggregate_stability` | 2 |
+| `aggregate_app_observation_v10_sql.json` | `manage_aggregate_app_observation` | `observation.observation` (aggregate) | 2 |
 
 ## Access levels
 
 Access levels reflect the operational role of each process:
 
 - Stratum 1: `manage_person` — minimal privilege for attributing data to individuals
-- Stratum 2: `manage_data_source`, `manage_sampling_log`, `manage_observation_log`, `manage_observation`, `manage_measurement_array` — regular data entry operations
+- Stratum 2: `manage_data_source`, `manage_sampling_log`, `manage_observation_log`, `manage_observation`, `manage_measurement_array`, `manage_beerkan_observation`, `manage_beerkan_infiltration_interval`, `manage_aggregate_app_observation` — regular data entry operations
 - Stratum 3: `manage_dataset`, `manage_campaign`, `manage_geolocation` — campaign-level management
 - Stratum 4: `manage_sample`, `manage_sample_image_orientation`, `manage_quantity`, `manage_measurement` — elevated operations requiring administrative oversight
 

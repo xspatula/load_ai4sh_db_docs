@@ -37,12 +37,14 @@ Process files are located at:
 | `profiling_v10_sql.json` | `manage_profiling` | `observation_utility.profiling` | 4 |
 | `provider_v10_sql.json` | `manage_provider` | `observation_utility.provider` | 4 |
 | `provision_indicator_v10_sql.json` | `manage_provision_indicator` | `observation_utility.provision_indicator` | 4 |
-| `provision_serial_nr_v10_sql.json` | `manage_provision_serial_nr` | `observation_utility.provision` (serial number field) | 4 |
+| `provision_serial_nr_v10_sql.json` | `manage_provision_serial_nr` | `observation_utility.provision_serial_nr` | 4 |
 | `provision_v10_sql.json` | `manage_provision` | `observation_utility.provision` | 4 |
 | `quantity_default_unit_v10_sql.json` | `manage_quantity_default_unit` | `observation_utility.quantity_default_unit` | 4 |
 | `quantity_v10_sql.json` | `manage_quantity` | `observation_utility.quantity` | 4 |
 | `setting_system_v10_sql.json` | `manage_setting` | `observation_utility.juxtaposition` (setting records) | 4 |
 | `spatial_reference_v10_sql.json` | `manage_spatial_reference` | `observation_utility.spatial_reference` | 4 |
+| `spectrometer_v10_sql.json` | `manage_spectrometer` | `observation_utility.spectrometer` | 4 |
+| `spectroscopy_method_v10_sql.json` | `manage_spectroscopy_method` | `observation_utility.spectroscopy_method` | 4 |
 | `storage_v10_sql.json` | `manage_storage` | `observation_utility.storage` | 4 |
 | `transportation_v10_sql.json` | `manage_transportation` | `observation_utility.transportation` | 4 |
 | `unit_translate_v10_sql.json` | `manage_unit_translate` | `observation_utility.unit_translate` | 4 |

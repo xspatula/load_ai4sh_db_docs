@@ -14,12 +14,15 @@ The `process` schema stores all process definitions and their parameter specific
 
 ## Process files
 
-Two process files create the process schema:
+Five process files create and seed the process schema:
 
 | File | Purpose |
 |---|---|
 | `process/processes_v10_sql.json` | Creates the 8 process tables |
+| `process/processes_fk_v10_sql.json` | Adds foreign key constraints between process tables |
+| `process/root_process_records_v10_sql.json` | Inserts the root process group definitions |
 | `process/processes_records_v10_sql.json` | Inserts the bootstrap processes needed to register all other processes |
+| `process/processes_records_fk_v10_sql.json` | Adds foreign key constraints for the bootstrap process records |
 
 ## Tables
 
@@ -38,7 +41,7 @@ The process schema defines 8 tables that together fully describe every operation
 
 ## Bootstrap processes
 
-`processes_records_v10_sql.json` inserts the minimal set of processes needed to register all other processes. Without these bootstrap records, no subsequent process file that tries to register a new process can execute — the framework would find no matching process definition for `manage_process`.
+`processes_records_v10_sql.json` inserts the minimal set of processes needed to register all other processes. Without these bootstrap records, no subsequent process file that tries to register a new process can execute — the framework would find no matching process definition for `add_process`.
 
 These bootstrap records are fixed and should not be edited.
 

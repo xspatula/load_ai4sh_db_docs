@@ -43,10 +43,13 @@ This pilot file lists the process JSON files to execute, grouped by schema. The 
 1. `root_process/` — define the process families
 2. `translate/` — translate tabular data process
 3. `utility/` — foreign key and territory management processes
-4. `observation_utility/` — ~25 processes for managing observation utility catalogues
+4. `observation_utility/` — 27 processes for managing observation utility catalogues
 5. `observation/` — processes for managing observation data
-6. `landscape/` — landscape observation processes (defined separately, not yet in pilot)
-7. `edna/` — eDNA workflow processes (defined separately, not yet in pilot)
+6. `select/` — processes for selecting spectral data
+7. `plot/` — processes for plotting indicators and spectra
+8. `machine_learning/` — 12 processes for spectral preprocessing, outlier detection, and regression
+9. `landscape/` — landscape processes (files defined, not yet in pilot)
+10. `edna/` — eDNA workflow processes (files defined, not yet in pilot)
 
 ## Process file structure
 
@@ -56,7 +59,7 @@ Every process definition JSON file follows the same structure. A process is regi
 {
   "process": [
     {
-      "process": "manage_process",
+      "process": "add_process",
       "overwrite": false,
       "parameters": {
         "root_process": "manage_table_data",

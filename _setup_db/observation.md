@@ -16,19 +16,24 @@ The `observation` schema stores actual soil property data. Data is organised in 
 
 | File | Tables created | Description |
 |---|---|---|
-| `observation/observation_data_source_v10_sql.json` | `data_source` | Simplified copy of `community.organisation` — passive data suppliers who need not be full system users |
-| `observation/observation_person_v10_sql.json` | `person` | Simplified copy of `community.user` with no login credentials — allows attributing data to non-registered persons (GDPR consideration) |
-| `observation/observation_dataset_v10_sql.json` | `dataset` | Top-level grouping of related data (e.g. LUCAS, AI4SoilHealth) |
-| `observation/observation_campaign_v10_sql.json` | `campaign`, `campaign_meta`, `campaign_method_tier`, `campaign_location`, `campaign_provision`, `campaign_setting` | Child of dataset; captures details of a specific data collection effort |
-| `observation/observation_sampling_log_v10_sql.json` | `sampling_log` | A sampling event — one or multiple samples taken with consistent methods over a period |
-| `observation/observation_sample_geolocation_v10_sql.json` | `sample_geolocation` | Spatial coordinates for a geolocated sample |
-| `observation/observation_sample_v10_sql.json` | `sample` | An individual sample acquired under a sampling log |
-| `observation/observation_observation_log_v10_sql.json` | `observation_log` | Links a sampling log to a provision; records the logistics (preservation, storage, transportation) of getting the sample to analysis |
-| `observation/observation_observation_v10_sql.json` | `observation` | The actual measured value for a specific indicator from a specific provision |
-| `observation/observation_infiltration_beerkan_v10_sql.json` | `infiltration_beerkan` | BeerKan infiltration measurements |
-| `observation/observation_macrofauna_image_v10_sql.json` | `macrofauna_image` | Image records for macrofauna observations |
-| `observation/observation_macrofauna_v10_sql.json` | `macrofauna` | Macrofauna count and biomass observations |
-| `observation/observation_measurement_v10_sql.json` | `measurement` | General sensor or instrument measurements |
+| `observation/data_source_v10_sql.json` | `data_source` | Simplified copy of `community.organisation` — passive data suppliers who need not be full system users |
+| `observation/person_v10_sql.json` | `person` | Simplified copy of `community.user` with no login credentials — allows attributing data to non-registered persons (GDPR consideration) |
+| `observation/dataset_v10_sql.json` | `dataset` | Top-level grouping of related data (e.g. LUCAS, AI4SoilHealth) |
+| `observation/campaign_v10_sql.json` | `campaign`, `campaign_meta`, `campaign_method_tier`, `campaign_location`, `campaign_provision`, `campaign_setting` | Child of dataset; captures details of a specific data collection effort |
+| `observation/sampling_log_v10_sql.json` | `sampling_log` | A sampling event — one or multiple samples taken with consistent methods over a period |
+| `observation/sample_geolocation_v10_sql.json` | `sample_geolocation` | Spatial coordinates for a geolocated sample |
+| `observation/sample_v10_sql.json` | `sample` | An individual sample acquired under a sampling log |
+| `observation/sample_z_profile_v10_sql.json` | `sample_profile` | Depth profile interval (profile_min, profile_max) for samples with a z-dimension |
+| `observation/sample_image_v10_sql.json` | `sample_image` | Image records associated with samples |
+| `observation/observation_log_v10_sql.json` | `observation_log` | Links a sampling log to a provision; records the logistics (preservation, storage, transportation) of getting the sample to analysis |
+| `observation/observation_v10_sql.json` | `observation` | The actual measured value for a specific indicator from a specific provision |
+| `observation/spectra_v10_sql.json` | `spectra_scan` | Spectral scan metadata — signal statistics, spectroscopy method, and quality flags linked to an observation |
+| `observation/measurement_v10_sql.json` | `measurement` | General sensor or instrument measurements |
+| `observation/microbiometer_measurement_v10_sql.json` | `microbiometer_measurement` | Microbiometer carbon content measurements linked to an observation |
+| `observation/infiltration_beerkan_v10_sql.json` | `infiltration_beerkan` | BeerKan ring infiltration measurements |
+| `observation/slakes_v10_sql.json` | `app_aggregate_stability` | Aggregate stability measurements from the SLAKES app |
+| `observation/macrofauna_v10_sql.json` | `macrofauna` | Macrofauna count and biomass observations |
+| `observation/macrofauna_image_v10_sql.json` | `macrofauna_image` | Image records for automated macrofauna detection |
 
 ## Table hierarchy
 
