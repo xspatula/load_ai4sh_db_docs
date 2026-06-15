@@ -52,7 +52,7 @@ The three **framework default** schemas (`utility`, `community`, `process`) are 
 
 ## Schema dependencies
 
-Tables across schemas reference each other using foreign keys. The dependency order is:
+Tables across schemas reference each other using foreign keys, for instance:
 
 ```
 utility ← community ← process

@@ -87,6 +87,17 @@ profiling.json
 | `juxtaposition.json` | `setting_system` |
 | `profiling.json` | `unit` |
 
+## Classification hierarchy
+
+The classification of any sample can optionally be linked to a hierarchical classification system loosely building on the Linnean style and terminology with five (5) levels.
+1. order
+2. family
+3. genus
+4. species
+5. specimen
+
+Order, family and genus are predefined in the AI4SoilHealth database. To insure consistency and avoid duplicate terminology the script that translates classification data fills all classification children with identical entries set for a parent class. For the AI4SoilHealth database, 'soil' is entered as an order, the classification 'soil' is then also entered identically as a family, a genus and a species. The FAO soil classes are also included in the AI4SoilHealth database - at the genus classification level. The FAO soil classes are all classified as the 'family' soil, and thus also as the 'order' soil. Further, all FAO classes are also classified as 'species' - disallowing any other entry of a standard FAO soil name in the species classification table.
+
 ## Translate process file structure
 
 Each entry in the pilot file is a translate process file in `./ai4sh/import_data/utility/observation/process/`. All files share the same structure. Example for `apparatus.json`:
@@ -117,7 +128,7 @@ Each translate process file reads its Excel source and writes a manage process f
 
 ## Source files
 
-All Excel source files are in `./ai4sh/import_data/utility/observation/excel/`. One `.xlsx` file per table. Column headers must match the target database table column names exactly.
+All Excel source files are in `./ai4sh/import_data/utility/observation/excel/`. One `.xlsx` file per table. Column headers must match the process definition of expected input objects exactly. For tables with no foreign keys these objects also corresponds to the target database table column names. For tables with foreign keys the excel column header is not directly linked to a table column. These column headers contain a double underscore (__) notation where the first part (before __) is the target column, and the second part informs where to find the relevant foreign key. The translation from the excel source file to a JSON command file keeps all headers without change. In the manage steps, the script that translated the JSON to the database checks all objects with a double underscore for the existence of the relevant foreign key by finding the correct table, column and record. It then reads the unique ID of this records in the foreign key table and transfers that ID to the target table column name. If the foreign key record is not found the data is not inserted and the script reports an error.
 
 ## Output
 

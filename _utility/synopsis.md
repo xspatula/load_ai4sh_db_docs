@@ -10,7 +10,7 @@ date: 2026-06-10 08:00:00 +0200
 last_modified_at: 2026-06-10 08:00:00 +0200
 ---
 
-Utility data provides the controlled vocabularies and reference catalogues that all observation data depends on. Every observation record must reference at least one utility entry — an apparatus, an indicator, a unit, a provision. Utility data must therefore be fully loaded before any dataset, sample, or observation data can be entered.
+Utility data provides the controlled vocabularies and reference catalogues that all observation data depends on. Every observation record must reference — an indicator, a unit and a provision (e.g. instrument, tool or laboratory analysis method). Utility data must therefore be fully loaded before any dataset, sample, or observation data can be entered.
 
 All utility loading is driven by a single notebook:
 
@@ -42,39 +42,39 @@ There are two sub-groups within observation utilities:
 
 | Excel file | Database table | Description |
 |---|---|---|
-| `analysis_method.xlsx` | `observation_utility.analysis_method` | Laboratory and field analysis methods |
-| `apparatus.xlsx` | `observation_utility.apparatus` | Instruments and tools delivering data |
-| `classification_order.xlsx` | `observation_utility.classification_order` | Highest Linnean taxonomy level |
-| `license.xlsx` | `observation_utility.license` | Dataset and campaign licenses |
-| `location_method.xlsx` | `observation_utility.location_method` | Geolocation methods |
-| `method_tier.xlsx` | `observation_utility.method_tier` | Professionality level of a method |
-| `preparation.xlsx` | `observation_utility.preparation` | Pre-analysis sample preparation |
-| `preservation.xlsx` | `observation_utility.preservation` | Sample preservation methods |
-| `provider.xlsx` | `observation_utility.provider` | Labs, services and instruments providing results |
-| `quantity.xlsx` | `observation_utility.quantity` | Unambiguous quantity definitions |
-| `setting_system.xlsx` | `observation_utility.setting_system` | Thematic frame for juxtapositions |
-| `spatial_reference.xlsx` | `observation_utility.spatial_reference` | EPSG-based coordinate reference systems |
-| `storage.xlsx` | `observation_utility.storage` | Sample storage methods |
-| `transportation.xlsx` | `observation_utility.transportation` | Sample transport conditions |
-| `unit.xlsx` | `observation_utility.unit` | Units of observation values |
+| `analysis_method.xlsx` | `analysis_method` | Laboratory and field analysis methods |
+| `apparatus.xlsx` | `apparatus` | Instruments and tools delivering data |
+| `classification_order.xlsx` | `classification_order` | Highest Linnean style taxonomy level |
+| `license.xlsx` | `license` | Dataset and campaign licenses |
+| `location_method.xlsx` | `location_method` | Geolocation methods |
+| `method_tier.xlsx` | `method_tier` | Professionality level of a method |
+| `preparation.xlsx` | `preparation` | Pre-analysis sample preparation |
+| `preservation.xlsx` | `preservation` | Sample preservation methods |
+| `provider.xlsx` | `provider` | Labs, services and instruments providing results |
+| `quantity.xlsx` | `quantity` | Unambiguous quantity definitions |
+| `setting_system.xlsx` | `setting_system` | Thematic frame for juxtapositions |
+| `spatial_reference.xlsx` | `spatial_reference` | EPSG-based coordinate reference systems |
+| `storage.xlsx` | `storage` | Sample storage methods |
+| `transportation.xlsx` | `transportation` | Sample transport conditions |
+| `unit.xlsx` | `unit` | Units of observation values |
 
 **Dependent** (have foreign key requirements from the independent tables above):
 
 | Excel file | Database table | Requires |
 |---|---|---|
-| `classification_family.xlsx` | `observation_utility.classification_family` | `classification_order` |
-| `classification_genus.xlsx` | `observation_utility.classification_genus` | `classification_family` |
-| `indicator.xlsx` | `observation_utility.indicator` | `quantity` |
-| `juxtaposition.xlsx` | `observation_utility.juxtaposition` | `setting_system` |
-| `profiling.xlsx` | `observation_utility.profiling` | `unit` |
+| `classification_family.xlsx` | `classification_family` | `classification_order` |
+| `classification_genus.xlsx` | `classification_genus` | `classification_family` |
+| `indicator.xlsx` | `indicator` | `quantity` |
+| `juxtaposition.xlsx` | `juxtaposition` | `setting_system` |
+| `profiling.xlsx` | `profiling` | `unit` |
 
 **With inheritance** (depend on multiple observation utility tables and use `__` notation for FK lookup):
 
 | Excel file | Database table | Requires |
 |---|---|---|
-| `provision.xlsx` | `observation_utility.provision` | `apparatus`, `provider`, `method_tier` |
-| `provision_indicator.xlsx` | `observation_utility.provision_indicator` | `provision`, `indicator`, `analysis_method`, `unit` |
-| `provision_serial_nr.xlsx` | `observation_utility.provision_serial_nr` | `provision` |
+| `provision.xlsx` | `provision` | `apparatus`, `provider`, `method_tier` |
+| `provision_indicator.xlsx` | `provision_indicator` | `provision`, `indicator`, `analysis_method`, `unit` |
+| `provision_serial_nr.xlsx` | `provision_serial_nr` | `provision` |
 
 Source: `./ai4sh/import_data/utility/observation/excel/`
 

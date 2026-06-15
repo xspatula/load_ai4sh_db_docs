@@ -1,25 +1,50 @@
 ---
 layout: home
 author_profile: true
-excerpt: "The EU-funded AI4SoilHealth (AI4SH) database holds soil data from field sampling and multiple analytical instruments. This site documents how to load that data using the Xspatula framework."
+excerpt: "The EU-funded AI4SoilHealth (AI4SH) collected soil data from field sampling and multiple analytical instruments across Europe. This site documents how to create, seed, load data and model soil properties using a postgreSQL database and Machine Learning using the Xspatula framework."
 ---
 
-# Loading AI4SH data with Xspatula
+# AI4SH in-situ modelling with Xspatula
 
-The EU-funded AI4SoilHealth (AI4SH) project database stores soil data collected from field sampling across Europe, analysed by wet laboratory, near-infrared, mid-infrared, LIBS, and other spectrometers. To accommodate this data with [FAIR (Findability, Accessibility, Interoperability, and Reuse)][fair] principles the [Xspatula framework][setup_core_db_docs_framework] provides a comprehensive PostgreSQL database and a JSON-driven Python workflow for loading data into it.
+The EU-funded AI4SoilHealth (AI4SH) project postgreSQL database stores soil data collected from field sampling across Europe, analysed by wet laboratory, spectroscopy, and a range of other laboratory, home and field based sensors. To accommodate this data with [FAIR (Findability, Accessibility, Interoperability, and Reuse)][fair] principles the [Xspatula framework][xspatula] provides a comprehensive PostgreSQL database and a JSON-driven Python workflow for first loading data and then apply Machine Learning for modelling key soil properties more rapidly from spectra and with home and field based sensors.
 
 ## Prerequisites
 
-Before loading data you must have completed two earlier stages:
+The first two stages, setting up a postgreSQl database and register processes in the database, are introduced in more detail in the [general introduction to the Xspatula framework][setup_core_db_docs]:
 
-1. **Database setup** — schemas and tables created; see [Setup core db][setup_core_db_docs]
-2. **Process registration** — all framework processes registered; see [Setup processes][setup_process]
+1. **Database setup** — schemas and tables created; see [Setup core db][setup_core_db]
+2. **Process registration** — all framework processes registered; see [Setup processes][setup_core_processes]
 
-You also need to clone or download the AI4SH data loading package:
+These two stages are also covered, with focus on creating the AI4SH database and its core processes, in this site.
+
+To get started you need to clone or download the AI4SH data loading package from [GitHub][github]:
 
 ```bash
 git clone https://github.com/xspatula/load_ai4sh_db
 ```
+
+## Outline of the AI4SH postgreSQL database
+
+The AI4SH postgres database contains 9 schemas:
+
+- **utility** — support tables for general information used across schemas (default framework schema)
+- **community** — organisations and users; all users logging into the system must be registered here (default framework schema)
+- **process** — all processes defined for the AI4SH database (default framework schema)
+- **landscape_utility** — reference tables for landscape classification
+- **landscape** — landscape observations
+- **observation_utility** — catalogues and reference data required for FAIR-compliant soil observations (units, methods, instruments, taxa, etc.)
+- **observation** — actual soil property data, organised through datasets, campaigns, samples and observations
+- **edna_utility** — reference tables for environmental DNA methods
+- **edna** — eDNA observations
+
+## Seeding the database
+
+The AI4SH database is seeded in two stages:
+
+1. **[Setup DB][setup_db]** — defines all schemas and tables using the Jupyter notebook `setup/setup_db.ipynb`
+2. **[Setup processes][setup_process]** — registers all framework processes in the database using the notebook `setup/setup_processes.ipynb`
+
+Both stages use the Xspatula JSON-driven workflow: a _scheme file_ points to a _job file_, which links to a _pilot file_ listing the individual _process files_ to execute. Alternatively, if you only have one _process_file_, you can point directly from the _job_file_ to this _process_file_ and skip a _pilot_file_. For a detailed explanation of this hierarchy, see the [Xspatula framework documentation][setup_core_db_docs_framework].
 
 ## Data loading overview
 
@@ -58,6 +83,9 @@ _Funded by the European Union. The views and opinions expressed are those of the
 [fair]: https://www.go-fair.org/fair-principles/
 [setup_core_db_docs]: https://xspatula.github.io/setup_core_db_docs/
 [setup_core_db_docs_framework]: https://xspatula.github.io/setup_core_db_docs/framework/
+[setup_core_db]:https://xspatula.github.io/setup_core_db_docs/setup_db/
+[setup_core_processes]:https://xspatula.github.io/setup_core_db_docs/setup_processes/
+[setup_db]: /setup_db/
 [setup_process]: /setup_process/
 [utility]: /utility/
 [dataset_meta]: /dataset_meta/
@@ -65,3 +93,5 @@ _Funded by the European Union. The views and opinions expressed are those of the
 [wetlab]: /wetlab/
 [spectra]: /spectra/
 [all_data]: /all_data/
+[github]: https://github.com/xspatula/load_ai4sh_db
+[xspatula]: https://xspatula.github.io

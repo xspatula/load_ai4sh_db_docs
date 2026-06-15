@@ -122,7 +122,7 @@ The job file points to the pilot file:
 ./setup/zzz/ai4sh/setup_db/db_xspatula_ai4sh_setup.txt
 ```
 
-This text file lists all process JSON files in the order they must be executed. The order matters because of foreign key dependencies — schemas must exist before tables, and reference tables before tables that reference them.
+This text file lists all process JSON files in the order they must be executed. The order matters because schemas must exist before tables, and reference tables before tables that reference them.
 
 The full execution order is:
 
@@ -148,6 +148,14 @@ Before running the notebook, also edit the default organisation and user records
 ```
 
 These files insert at least one default organisation and user into the database. The inserted user name and password must match the `user_project` credentials in subsequent (non-setup) scheme files.
+
+You must also edit the records for inserting the initial processes -- used for defining all other processes:
+
+```
+./setup/zzz/ai4sh/setup_db/json_ai4sh/process/processes_records_v10_sql.json
+```
+
+You must change the name of the `creator` to the name of a user you just defined in all records to be inserted. If the user is not found in the database when running this command, the script will return an error.
 
 ## Run the notebook
 

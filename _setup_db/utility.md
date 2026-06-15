@@ -32,15 +32,16 @@ Key columns:
 | Column | Type | Description |
 |---|---|---|
 | `id` | SERIAL | Primary key |
-| `territory_id` | VARCHAR | ISO or custom territory code |
-| `name` | VARCHAR | Full territory name |
-| `territory_type` | VARCHAR | Classification (e.g. country, region) |
+| `name` | TEXT | territory name in small letters |
+| `display_name` | TEXT | Territory name to display |
+| `iso_code_a2` | TEXT | Territory iso code (or equivalent) |
+| `iso_code_a2_ext` | TEXT | Territory iso code or extended iso-code (or equivalent) |
 
 The `utility_territory_v10_sql.json` file pre-loads standard territory records so that the community user table can immediately reference valid territory IDs.
 
 ### foreign_key
 
-When a process required a foreign key (fk), the default parameter for identifying a foreign key is:
+When a process requires a foreign key (fk), the default parameter for identifying a foreign key includes a double underscore:
 
 ```
 source_table_name__fk-table_fk-column
@@ -54,7 +55,7 @@ For example, to find the foreign key for the column _dataset_id_, the parameter:
 
 will search the table _dataset_ column _name_ for the value _AI4SH_ and return the _id_ of that records, and the _id_ will be used as the foreign key. This syntax is not possible to use in all cases, for instance when a process requires more than one fk from the same destination table.
 
-The `foreign_key` table holds information on which schema, table and column to use for searching foreign keys. Most foreign keys are constructed such that the name of the parameter reveals the foreign key to look for, but that are exceptions. For these exceptions, the python scripts looks for the correct foreign key in the utility.foreign_key table.
+The `foreign_key` table holds information on which schema, table and column to use for searching foreign keys that can not be resolved with the default syntax. Most foreign keys are constructed such that the name of the parameter reveals the foreign key to look for, but there are exceptions. For these exceptions, the python scripts looks for the correct foreign key in the utility.foreign_key table.
 
 Key columns:
 

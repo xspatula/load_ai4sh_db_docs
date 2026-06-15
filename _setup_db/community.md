@@ -68,9 +68,8 @@ Tracks cumulative session time and last activity date per user.
 
 The files `organisation_records_v10_sql.json` and `user_records_v10_sql.json` insert default records directly into the database during setup. You must edit these files to include at least one real organisation and one real user before running the notebook.
 
-The inserted user will be the creator of all subsequent process records and the default operator for the framework. The `user_name` and `password` in these files must match the `user_project` credentials in any non-setup scheme file you later use to operate the database.
+The `user_name` and `password` in these files must match the `user_project` credentials in any non-setup scheme file you later use to operate the database.
 
 For the full framework treatment of the community schema and its role in authentication, see the [core framework documentation][setup_core_db_docs_schemas].
-
 
 [setup_core_db_docs_schemas]: https://xspatula.github.io/setup_core_db_docs/setup_db/schemas_tables/

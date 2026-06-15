@@ -12,17 +12,17 @@ last_modified_at: 2026-03-31 08:00:00 +0200
 
 The `process` schema stores all process definitions and their parameter specifications. It is one of the three default Xspatula framework schemas. Every operation the framework can execute — including the operations used to insert records into the `process` schema itself — must be registered here before it can be called from a process file.
 
-## Process files
+## Process files — edit before running
 
-Five process files create and seed the process schema:
+Three process files create and seed the process schema:
 
 | File | Purpose |
 |---|---|
 | `process/processes_v10_sql.json` | Creates the 8 process tables |
-| `process/processes_fk_v10_sql.json` | Adds foreign key constraints between process tables |
 | `process/root_process_records_v10_sql.json` | Inserts the root process group definitions |
 | `process/processes_records_v10_sql.json` | Inserts the bootstrap processes needed to register all other processes |
-| `process/processes_records_fk_v10_sql.json` | Adds foreign key constraints for the bootstrap process records |
+
+You must edit `processes_records_v10_sql.json` to have a `creator` that exists in the database; if not the script will report an error and stop. Typically, the user defined in the [Default community records][default_community_record]
 
 ## Tables
 
@@ -43,7 +43,8 @@ The process schema defines 8 tables that together fully describe every operation
 
 `processes_records_v10_sql.json` inserts the minimal set of processes needed to register all other processes. Without these bootstrap records, no subsequent process file that tries to register a new process can execute — the framework would find no matching process definition for `add_process`.
 
-These bootstrap records are fixed and should not be edited.
+As outlined above you must edit the `creator` for all process records to be inserted, but otherwise
+these bootstrap records are fixed and should not be edited.
 
 ## AI4SH processes
 
@@ -54,3 +55,4 @@ For the full technical description of the process schema tables and how process 
 
 [setup_processes]: /setup_process/
 [setup_core_db_docs_schemas]: https://xspatula.github.io/setup_core_db_docs/setup_db/schemas_tables/
+[default_community_record]: ../index.html#default-community-records

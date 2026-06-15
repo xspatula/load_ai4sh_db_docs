@@ -10,7 +10,8 @@ date: 2026-06-10 08:00:00 +0200
 last_modified_at: 2026-06-10 08:00:00 +0200
 ---
 
-The fourth utility step inserts all non-inheritance observation utility catalogues into the database. The 20 tables are processed in the order defined by the pilot file, which respects foreign key dependencies.
+The fourth utility step inserts all non-inheritance observation utility catalogues into the database. The 20 tables are processed in the order defined by the pilot file, which respects foreign key dependencies. Tables linking to other tables with a foreign key use an __ notation in parameter keys to resolve foreign keys by name rather than ID.
+
 
 ## Prerequisite
 

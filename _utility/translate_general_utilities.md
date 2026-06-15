@@ -81,7 +81,7 @@ The translate process reads `territory.xlsx` and writes the resulting manage pro
 
 **Path**: `./ai4sh/import_data/utility/general/excel/territory.xlsx`
 
-The Excel file contains one row per territory. The framework maps each column header directly to a database column name in `utility.territory`. Required columns:
+The Excel file contains one row per territory. The framework maps each column header directly to a database column name in `utility.territory` (only possible for tables that have no foreign keys). Required columns:
 
 | Column | Description |
 |---|---|

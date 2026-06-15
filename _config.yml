@@ -9,10 +9,11 @@ subtitle                 : "Database-integrated Python modelling"
 name                     : "Thomas Gumbricht"
 description              : "Documentation for loading AI4SoilHealth data into the Xspatula PostgreSQL framework."
 url                      : "https://xspatula.github.io"
-baseurl                  : "/load_ai4sh_db_docs"
+# Edited by TG 20260615 baseurl                  : "/load_ai4sh_db_docs"
+baseurl                  : ""
 repository               : "xspatula/load_ai4sh_db_docs"
 logo                     : "/assets/media/xspectre_logo-trans_480.png"
-masthead_title           : "Script your own environment"
+masthead_title           : "Script your own environ"
 breadcrumbs              : false
 words_per_minute         : 200
 enable_copy_code_button  : true
